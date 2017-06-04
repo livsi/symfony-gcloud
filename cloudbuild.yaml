@@ -1,4 +1,4 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'eu.gcr.io/$PROJECT_ID/symfony-gcloud-php', '.' ]
+  args: [ 'build', '-t', 'eu.gcr.io/$PROJECT_ID/symfony-gcloud-php:$TAG_NAME', '.' ]
 images: ['eu.gcr.io/$PROJECT_ID/symfony-gcloud-php:$TAG_NAME']
