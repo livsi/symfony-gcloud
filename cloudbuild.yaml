@@ -1,0 +1,6 @@
+steps:
+- name: gcr.io/cloud-builders/gcloud
+  args: ['source', 'repos', 'clone', 'default']
+- name: gcr.io/cloud-builders/docker
+  args: [ 'build', '-t', 'eu.gcr.io/$PROJECT_ID/symfony-gcloud-php', '.' ]
+images: ['eu.gcr.io/$PROJECT_ID/symfony-gcloud-php:$TAG_NAME']
