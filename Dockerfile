@@ -1,8 +1,8 @@
 FROM php:7.1.5-alpine
 
-COPY config/php/php.ini /usr/local/etc/php/php.ini
-COPY config/php/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint
-COPY config/php/install-composer.sh /usr/local/bin/docker-app-install-composer
+COPY docker/php/php.ini /usr/local/etc/php/php.ini
+COPY docker/php/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint
+COPY docker/php/install-composer.sh /usr/local/bin/docker-app-install-composer
 COPY api /var/www/symfony
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
@@ -38,8 +38,6 @@ RUN set -xe \
 RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative
 
 EXPOSE 9000
-
-VOLUME /var/www/symfony/web
 
 WORKDIR /var/www/symfony
 
