@@ -32,8 +32,7 @@ RUN set -xe \
 	&& chmod +x /usr/local/bin/docker-app-install-composer \
 	&& docker-app-install-composer \
 	&& mv composer.phar /usr/local/bin/composer \
-	&& apk del .build-deps \
-	&& chown -R 82 /var/www/symfony
+	&& apk del .build-deps
 
 RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative
 

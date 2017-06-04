@@ -15,6 +15,4 @@ else
     composer install --prefer-dist --optimize-autoloader --no-suggest
 fi
 
-chown -R 82 .
-
 exec "$@"
