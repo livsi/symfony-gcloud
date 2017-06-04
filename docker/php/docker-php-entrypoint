@@ -1,0 +1,20 @@
+#!/bin/ash
+
+#!/bin/sh
+set -e
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- php-fpm "$@"
+fi
+
+if [ "${SYMFONY_ENV}" == "prod" ]; then
+    composer dump-autoload --optimize --classmap-authoritative --no-dev
+else
+    export DOCKER_BRIDGE_IP=$(ip ro | grep default | cut -d' ' -f 3)
+    composer install --prefer-dist --optimize-autoloader --no-suggest
+fi
+
+chown -R 82 .
+
+exec "$@"
